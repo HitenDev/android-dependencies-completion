@@ -1,0 +1,24 @@
+<idea-plugin>
+    <id>me.hiten.get-androidx</id>
+    <name>Get Androidx</name>
+    <vendor email="zzdxit@gmail.com" url="http://www.hiten.me">HitenDev</vendor>
+
+    <description><![CDATA[NoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNone]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+    </extensions>
+
+
+    <actions>
+        <action id="me.hiten.getandroidx.MainAction" class="me.hiten.getandroidx.MainAction" text="AndroidX Packages">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+        </action>
+
+    </actions>
+</idea-plugin>
