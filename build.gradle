@@ -1,7 +1,19 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.70"
+    }
+}
+
 plugins {
     id 'java'
     id 'org.jetbrains.intellij' version '0.4.8'
 }
+
+apply plugin: 'java'
+apply plugin: "kotlin"
 
 group 'me.hiten'
 version '1.0-SNAPSHOT'
@@ -19,6 +31,7 @@ dependencies {
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
     version '2019.1.2'
+    plugins = ['Groovy', 'gradle']
 }
 patchPluginXml {
     changeNotes """
