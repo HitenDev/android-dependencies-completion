@@ -29,6 +29,23 @@ interface DependencySearcher {
             return fullText!!
         }
 
+        fun getFullTextAndColon(): String {
+            var fullText = groupId
+            if (!groupId.isNullOrEmpty()) {
+                fullText += ":"
+            }
+            if (!artifact.isNullOrEmpty()) {
+                fullText += "$artifact:"
+            }
+            if (!version.isNullOrEmpty()) {
+                fullText += "$version"
+            }
+            if (fullText.isNullOrEmpty()) {
+                return ""
+            }
+            return fullText!!
+        }
+
     }
 
 }

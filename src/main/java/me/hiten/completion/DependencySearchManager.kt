@@ -68,17 +68,20 @@ class DependencySearchManager(private val dependencyText: DependencyText) {
 
     private fun createLookupElement(result: DependencySearcher.Result, cheatString: String): LookupElement {
         return LookupElementBuilder.create(result, cheatString).withRenderer(CustomLookupElementRenderer(dependencyText)).withInsertHandler { context, item ->
-            val quoteArg = dependencyText.quoteArg
+            var quoteArg = dependencyText.quoteArg
             val text: String
             var insertArg: String? = null
-            if (quoteArg.isNullOrEmpty()) {
-                text = result.getFullText()
+            if (quoteArg == null) {
+                text = result.getFullTextAndColon()
             } else {
                 if (result.version.isNullOrEmpty() || result.artifact.isNullOrEmpty()) {
-                    text = result.getFullText() + "$$quoteArg"
+                    text = result.getFullText()
                 } else {
+                    if (quoteArg.isEmpty()) {
+                        quoteArg = "ver_${result.artifact}"
+                    }
                     text = "${result.groupId}:${result.artifact}:$$quoteArg"
-                    insertArg = "//{ext.$quoteArg = '${result.version}'}"
+                    insertArg = "// ext.$quoteArg = '${result.version}' "
                 }
             }
             val editor = context.editor
@@ -88,10 +91,18 @@ class DependencySearchManager(private val dependencyText: DependencyText) {
             val lineStartOffset = document.getLineStartOffset(lineNumber)
             val lineEndOffset = document.getLineEndOffset(lineNumber)
             val allText = document.text
-            var lineText = allText.substring(lineStartOffset, lineEndOffset)
+            var lineText = allText.substring(lineStartOffset, offset)
             lineText = lineText.replace(cheatString, text)
 
+            if (lineText.contains("'")) {
+                lineText += "'"
+            } else if (lineText.contains("\"")) {
+                lineText += "\""
+            }
 
+            if (lineText.contains("(")) {
+                lineText += ")"
+            }
             insertArg?.let {
                 if (lineText.contains("'")) {
                     lineText = lineText.replace("'", "\"")
@@ -112,8 +123,8 @@ class DependencySearchManager(private val dependencyText: DependencyText) {
                 val result = (element as LookupElementBuilder).`object` as DependencySearcher.Result
                 presentation?.typeText = result.source
                 val quoteArg = dependencyText.quoteArg
-                if (quoteArg.isNullOrEmpty()) {
-                    presentation?.itemText = result.getFullText()
+                if (quoteArg == null) {
+                    presentation?.itemText = result.getFullTextAndColon()
                 } else {
                     if (result.version.isNullOrEmpty() || result.artifact.isNullOrEmpty()) {
                         presentation?.itemText = result.getFullText() + "$$quoteArg"
@@ -124,6 +135,10 @@ class DependencySearchManager(private val dependencyText: DependencyText) {
             }
 
         }
+    }
+
+    companion object {
+        const val Q_SYMBOL = "#"
     }
 
 }
