@@ -7,7 +7,6 @@ import com.intellij.codeInsight.lookup.*
 import com.intellij.util.containers.isNullOrEmpty
 import me.hiten.completion.androidsearch.AndroidDependencySearcher
 import me.hiten.completion.mavensearch.MavenDependencySearcher
-import java.awt.Color
 
 class DependencySearchManager(private val dependencyText: DependencyText) {
 
@@ -177,7 +176,6 @@ class DependencySearchManager(private val dependencyText: DependencyText) {
                         }
                         presentation?.itemText = "${result.groupId}:${result.artifact}:$$quoteArg=${result.version}"
                     }
-                    presentation?.itemTextForeground = Color.BLUE
                 }
             }
 
