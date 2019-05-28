@@ -99,7 +99,7 @@ class DependencySearchManager(private val dependencyText: DependencyText) {
 
 
     private fun createLookupElement(result: DependencySearcher.Result, cheatString: String): LookupElement {
-        return LookupElementBuilder.create(result, cheatString).withRenderer(CustomLookupElementRenderer(dependencyText)).withInsertHandler { context, item ->
+        return LookupElementBuilder.create(result, cheatString).withRenderer(CustomLookupElementRenderer(dependencyText)).withInsertHandler { context, _ ->
             var quoteArg = dependencyText.quoteArg
             val text: String
             var insertArg: String? = null

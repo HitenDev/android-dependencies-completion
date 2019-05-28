@@ -2,12 +2,10 @@ package me.hiten.completion.androidsearch
 
 import me.hiten.completion.Client
 import org.apache.http.util.TextUtils
-import org.gradle.internal.impldep.com.amazonaws.util.StringInputStream
 import org.xml.sax.Attributes
 import org.xml.sax.InputSource
 import org.xml.sax.SAXException
 import org.xml.sax.helpers.DefaultHandler
-import java.io.InputStreamReader
 import java.util.*
 import javax.xml.parsers.SAXParserFactory
 
@@ -59,7 +57,7 @@ object GoogleMavenGroupIdSearcher {
             val saxParserFactory = SAXParserFactory.newInstance()
             val xmlReader = saxParserFactory.newSAXParser().xmlReader
             xmlReader.contentHandler = MyContentHandler()
-            xmlReader.parse(InputSource(InputStreamReader(StringInputStream(result))))
+            xmlReader.parse(InputSource(result.reader()))
         } catch (e: Exception) {
             e.printStackTrace()
         }
