@@ -1,9 +1,11 @@
 <idea-plugin>
     <id>me.hiten.completion</id>
     <name>android-dependencies-completion</name>
-    <vendor email="zzdxit@gmail.com" url="http://www.hiten.me">HitenDev</vendor>
+    <version>0.1</version>
+    <vendor email="zzdxit@gmail.com" url="https://github.com/HitenDev/android-dependencies-completion">HitenDev</vendor>
 
-    <description><![CDATA[NoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNone]]></description>
+    <description>
+        <![CDATA[Gradle Dependencies Code Completion , Searched by Maven'repo and Google'repo, for Android Developer]]></description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
@@ -12,6 +14,8 @@
     -->
     <depends>org.jetbrains.plugins.gradle</depends>
     <depends>org.intellij.groovy</depends>
+
+    <idea-version since-build="171"/>
 
     <extensions defaultExtensionNs="com.intellij">
         <completion.contributor language="Groovy" implementationClass="me.hiten.completion.GradleDependenciesCompletionContributor" order="first"/>

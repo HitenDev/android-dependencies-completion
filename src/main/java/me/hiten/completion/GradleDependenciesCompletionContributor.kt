@@ -1,15 +1,17 @@
 package me.hiten.completion
 
 import com.intellij.codeInsight.completion.*
-import com.intellij.patterns.PlatformPatterns
+import com.intellij.patterns.PlatformPatterns.*
 import com.intellij.util.ProcessingContext
 import org.apache.http.util.TextUtils
 import org.jetbrains.plugins.gradle.util.GradleConstants
+import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.literals.GrLiteral
+import org.jetbrains.plugins.groovy.lang.psi.api.statements.expressions.literals.GrStringContent
 
 
 class GradleDependenciesCompletionContributor : CompletionContributor() {
     init {
-        extend(CompletionType.SMART, GRADLE_FILE_PATTERN, GradleDependenciesCompletionProvider())
+        extend(CompletionType.SMART, GRADLE_STRING_PATTERN, GradleDependenciesCompletionProvider())
     }
 
 
@@ -29,7 +31,10 @@ class GradleDependenciesCompletionContributor : CompletionContributor() {
     }
 
     companion object {
-        private val GRADLE_FILE_PATTERN = PlatformPatterns.psiElement().and(
-                PlatformPatterns.psiElement().inFile(PlatformPatterns.psiFile().withName(PlatformPatterns.string().endsWith('.' + GradleConstants.EXTENSION))))
+        private val GRADLE_FILE_PATTERN = psiElement().and(
+                psiElement().inFile(psiFile().withName(string().endsWith('.' + GradleConstants.EXTENSION))))
+
+        private val GRADLE_STRING_PATTERN = GRADLE_FILE_PATTERN.andOr(psiElement()
+                .withParent(GrLiteral::class.java), psiElement().withParent(GrStringContent::class.java))
     }
 }
