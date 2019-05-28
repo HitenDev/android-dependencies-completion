@@ -14,7 +14,7 @@
     <change-notes>
         <![CDATA[0.1 Add google repo search and quote symbol]]></change-notes>
 
-    <idea-version since-build="173.0"/>
+    <idea-version since-build="171.0"/>
 
     <extensions defaultExtensionNs="com.intellij">
         <completion.contributor language="Groovy" implementationClass="me.hiten.completion.GradleDependenciesCompletionContributor" order="first"/>
