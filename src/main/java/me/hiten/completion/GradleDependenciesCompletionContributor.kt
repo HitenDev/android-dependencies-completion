@@ -14,7 +14,6 @@ class GradleDependenciesCompletionContributor : CompletionContributor() {
         extend(CompletionType.SMART, GRADLE_STRING_PATTERN, GradleDependenciesCompletionProvider())
     }
 
-
     internal class GradleDependenciesCompletionProvider : CompletionProvider<CompletionParameters>() {
 
         override fun addCompletions(parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
@@ -26,7 +25,13 @@ class GradleDependenciesCompletionContributor : CompletionContributor() {
             if (TextUtils.isEmpty(text)) {
                 return
             }
-            DependencySearchManager(DependencyText(trimQuote(text))).search(result)
+            val dependencyText = DependencyText(trimQuote(text))
+            val completionTextHandler = CompletionTextHandler(dependencyText)
+            if (completionTextHandler.performShow(result)) {
+                return
+            }
+            val searchList = DependencySearchManager(dependencyText).search()
+            completionTextHandler.onShow(result, searchList)
         }
     }
 
