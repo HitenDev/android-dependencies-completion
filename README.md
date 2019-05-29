@@ -57,4 +57,8 @@ then press `Shortcut Key`
 
 ![](https://user-gold-cdn.xitu.io/2019/5/29/16b01f9efecf2cfc?w=776&h=362&f=gif&s=151632)
 
-# More
+# Contact Me
+
+- `nickname`: HitenDev
+- `email`: zzdxit@gmail.com
+- `juejin`: https://juejin.im/user/595a16125188250d944c6997
