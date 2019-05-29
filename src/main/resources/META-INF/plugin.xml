@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>me.hiten.completion</id>
     <name>android-dependencies-completion</name>
-    <version>0.1</version>
+    <version>0.2</version>
     <vendor email="zzdxit@gmail.com" url="https://github.com/HitenDev/android-dependencies-completion">HitenDev</vendor>
 
     <description>
@@ -12,7 +12,7 @@
     <depends>org.intellij.groovy</depends>
 
     <change-notes>
-        <![CDATA[0.1 Add google repo search and quote symbol]]></change-notes>
+        <![CDATA[0.2 Add offline convert version/full variable]]></change-notes>
 
     <idea-version since-build="171.0"/>
 

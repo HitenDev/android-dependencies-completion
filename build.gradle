@@ -16,7 +16,7 @@ apply plugin: 'java'
 apply plugin: "kotlin"
 
 group 'me.hiten'
-version '0.1'
+version '0.2'
 
 sourceCompatibility = 1.8
 
