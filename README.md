@@ -7,6 +7,7 @@ This project base on [GradleDependenciesHelperPlugin](https://github.com/siosio/
 # Features
 - support google and mavenCentral，include android's `jetpack`/`androidx`/`support` packages.
 - support generating variable and custom variable.
+- dependencies variable offline covert.
 - simple and clear UI.
 
 
@@ -43,19 +44,24 @@ then press `Shortcut Key`
 ![](https://user-gold-cdn.xitu.io/2019/5/29/16b021d453eef7c0?w=836&h=368&f=gif&s=159919)
 
 ## Generating Variable
-append `'#'` to the end of the input string
+- append `'#'` to the end of the input string will generate a version variable
+
+- append `'##'` to the end of the input string will generate a full variable
 
 then press `Shortcut Key`
 
-![](https://user-gold-cdn.xitu.io/2019/5/29/16b01f68bdac2a7f?w=776&h=370&f=gif&s=206246)
+![](https://user-gold-cdn.xitu.io/2019/5/29/16b031d2139637d9?w=850&h=376&f=gif&s=220945)
 
 ## Custom Variable
 
-append `'#'+custom` to the end of the input string
+- append `'#'+custom` to the end of the input string will generate a version variable
+
+- append `'##'+custom` to the end of the input string will generate a full variable
 
 then press `Shortcut Key`
 
-![](https://user-gold-cdn.xitu.io/2019/5/29/16b01f9efecf2cfc?w=776&h=362&f=gif&s=151632)
+![](https://user-gold-cdn.xitu.io/2019/5/29/16b031d3cef4a76c?w=794&h=324&f=gif&s=235109)
+
 
 # Contact Me
 
