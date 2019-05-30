@@ -1,3 +1,5 @@
+[中文说明](https://juejin.im/post/5cee3498e51d4556be5b39e4)
+
 # android-dependencies-completion
 
 This is an Android Studio / IntelliJ IDEA plugin for search and complete dependencies from google() and mavenCentral() in Gradle projects.
